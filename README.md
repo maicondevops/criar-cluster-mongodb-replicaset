@@ -43,9 +43,8 @@ sudo systemctl start mongod.service && sudo systemctl status mongod && sudo syst
 ```
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo02.1.png" width="800" height="300"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo02.1.png" width="800" height="300"/>|
 
-  
 ------------------------------------------------------------------------------------
 --- 03 - ALTERAR O DIRETÓRIO DE DADOS DO MONGO
 ------------------------------------------------------------------------------------
@@ -67,7 +66,7 @@ storage: </br>
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo03.1.png" width="800" height="300"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo03.1.png" width="800" height="300"/>|
 
 -- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
 
