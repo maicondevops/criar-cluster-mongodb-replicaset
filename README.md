@@ -61,8 +61,10 @@ sudo nano /etc/mongod.conf
 
 -- ENCONTE A LINHA e ALTERE O PATH: </br>
 
-storage: </br>
-  dbPath: /Dados/MongoDB/mongodb </br>
+```
+storage:
+  dbPath: /Dados/MongoDB/mongodb
+```
 
 ||
 |---|
