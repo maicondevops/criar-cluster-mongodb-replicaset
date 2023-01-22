@@ -59,7 +59,7 @@ sudo service mongod stop
 sudo nano /etc/mongod.conf
 ```
 
--- ENCONTE A LINHA: </br>
+-- ENCONTE A LINHA e ALTERE O PATH: </br>
 
 storage: </br>
   dbPath: /Dados/MongoDB/mongodb </br>
@@ -68,7 +68,7 @@ storage: </br>
 |---|
 |<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo03.1.png" width="700" height="200"/>|
 
--- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
+-- AJUSTAR PEMISSÕES NO NOVO DIRETÓRIO DE DADOS: </br>
 
 ```
 sudo chmod 600 -R /Dados/MongoDB/mongodb && sudo chown mongodb:mongodb /Dados/MongoDB/mongodb/*
@@ -89,11 +89,14 @@ sudo service mongod restart && sudo service mongod status
 sudo service mongod stop && sudo nano /etc/mongod.conf
 ```
 
--- ADICIONE A AS LINHAS: </br>
-replication: </br>
-  replSetName: rs0 </br>
+-- ADICIONE AS LINHAS: </br>
+
+```
+replication:
+  replSetName: rs0
+```
   
-  ||
+||
 |---|
 |<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo04.1.png" width="700" height="200"/>|
 
@@ -134,14 +137,17 @@ sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 
 -- AJUSTAR O BIND IP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
 
+```
+sudo service mongod stop && sudo nano /etc/mongod.conf && sudo service mongod start
+```
+
 ||
 |---|
 |<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/726dd5e977630b5ddcf74fe41c80baf31c5509e9/img/passo05.1.png" width="700" height="200"/>|
 
 OBSERVAÇÃO:
 
-1 - ESSES IPS SÃO FICTICIOS. </br>
-2 - VOCÊ PRECISA CRIAR OS MESMOS REGISTROS NO SEU DNS EXTERNO, CASO SEU MONGO SEJA ACESSADO FORA DA SUA REDE LOCAL. </br>
+1 - SE O ACESSO AO MONGO FOR EXTERNO, VOCÊ PRECISA CRIAR OS REGISTROS NO SEU DNS EXTERNO. </br>
 
 ------------------------------------------------------------------------------------
 --- 06 - ATIVAR REPLICASET E INGRESSAR NODES
@@ -166,7 +172,7 @@ db.createUser(
 )
 
 ```
--- APÓS CONFIGURE O REPLICASET: </br>
+-- ATIVAR O REPLICASET: </br>
 
 ```
 rs.initiate() 
@@ -174,6 +180,8 @@ var cfg = rs.conf()
 cfg.members[0].host="mdb01.mydomain.com:27017" 
 rs.reconfig(cfg) 
 ```
+
+-- ADICIONAR NODES: </br>
 
 ```
 rs.add("mdb02.mydomain.com:27017")
@@ -205,7 +213,7 @@ mongodb://mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27
 ------------------------------------------------------------------------------------
 --- 08 - GERAR KEY E ATIVAR AUTHORIZATION
 ------------------------------------------------------------------------------------
--- EXECUTAR NO MASTER: </br>
+-- EXECUTAR APENAS NO MASTER: </br>
 
 ```
 sudo bash -c "openssl rand -base64 756 > /Dados/MongoDB/mongodb/mongodb-key" && sudo chmod 600 /Dados/MongoDB/mongodb/mongodb-key && sudo chown mongodb:mongodb /Dados/MongoDB/mongodb/mongodb-key 
@@ -233,20 +241,21 @@ sudo nano /Dados/MongoDB/mongodb/mongodb-key
 sudo chmod 600 /Dados/MongoDB/mongodb/mongodb-key && sudo chown mongodb:mongodb /Dados/MongoDB/mongodb/mongodb-key
 ```
 
--- ATIVAR AUTHORIZATION EM TODOS AS MÁQUINAS: </br>
-
--- EDITAR: : </br>
+-- ATIVAR AUTHORIZATION EM TODAS AS MÁQUINAS: </br>
 
 ```
 sudo nano /etc/mongod.conf
 ```
 
 -- ADICIONE A AS LINHAS: </br>   
+
+```
 security:
    authorization: enabled
    keyFile: /Dados/MongoDB/mongodb/mongodb.key
+```
    
-   ||
+||
 |---|
 |<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.2.png" width="700" height="200"/>|
 
