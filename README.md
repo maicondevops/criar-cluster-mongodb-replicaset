@@ -43,7 +43,7 @@ sudo systemctl start mongod.service && sudo systemctl status mongod && sudo syst
 ```
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo02.1.png" width="800" height="300"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo02.1.png" width="800" height="250"/>|
 
 ------------------------------------------------------------------------------------
 --- 03 - ALTERAR O DIRETÓRIO DE DADOS DO MONGO
@@ -66,7 +66,7 @@ storage: </br>
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo03.1.png" width="800" height="300"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo03.1.png" width="800" height="250"/>|
 
 -- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
 
@@ -123,10 +123,13 @@ sudo echo "mdb03.mydomain.com" > /etc/hostname
 -- EM TODAS A VMs: </br>
 
 ```
-sudo echo "24.145.54.110 mdb01.mydomain.com" >> /etc/hosts
-sudo echo "3.101.87.5 mdb02.mydomain.com" >> /etc/hosts
-sudo echo "19.786.35.28 mdb03.mydomain.com" >> /etc/hosts
+sudo echo "192.168.50.10 mdb01.mydomain.com" >> /etc/hosts
+sudo echo "192.168.50.11 mdb02.mydomain.com" >> /etc/hosts
+sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 ```
+
+-- AJUSTAR O BINDIP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
+
 
 OBSERVAÇÃO:
 
@@ -145,15 +148,15 @@ mongo
 -- CRIAR UM USUÁRIO ADMINISTRADOR </br>
 
 ```
-db.createUser( 
- { </br>
- user: "mongoadmin", 
- pwd: "321321",</br>
+db.createUser(
+ {
+ user: "mongoadmin",
+ pwd: "mongoadmin",
  roles: [ "userAdminAnyDatabase",
-          "dbAdminAnyDatabase", 
+          "dbAdminAnyDatabase",
           "readWriteAnyDatabase"]
- } 
-) 
+ }
+)
 
 ```
 -- APÓS CONFIGURE O REPLICASET: </br>
@@ -230,13 +233,12 @@ security:
 sudo service mongod restart && sudo systemctl restart mongod && sudo systemctl status mongod
 ```
 
-
 ------------------------------------------------------------------------------------
---- 08 - TESTAR LOGON NO CLUSTER COM AUTHORIZATION
+--- 09 - TESTAR LOGON NO CLUSTER COM AUTHORIZATION
 ------------------------------------------------------------------------------------
 
 ```
-mongodb://mongoadmin:321321@mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27017/?replicaSet=rs0
+mongodb://mongoadmin:mongoadmin@mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27017/?replicaSet=rs0
 ```
 
 
