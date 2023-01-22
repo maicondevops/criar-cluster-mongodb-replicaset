@@ -287,9 +287,9 @@ mongodb://mongoadmin:mongoadmin@mdb01.mydomaincom:27017,mdb02.mydomain.com:27017
 --- 10 - POSSÍVEIS ERROS E DICAS
 ------------------------------------------------------------------------------------
 
-1 - Erro de permissão no diretório "/Dados/MongoDB/mongodb".
-2 - Erro de permissão no arquivo "/Dados/MongoDB/mongodb/mongodb.key".
-3 - Erro no acesso externo da VM, editar BindIp no arquivo "/etc/mongod.conf".
-4 - Sempre leia o arquivo de log "/var/log/mongodb/mongod.log". A resposta para a maioria dos problemas estará nele.
+1 - Erro de permissão no diretório "/Dados/MongoDB/mongodb". </br>
+2 - Erro de permissão no arquivo "/Dados/MongoDB/mongodb/mongodb.key". </br>
+3 - Erro no acesso externo da VM, editar BindIp no arquivo "/etc/mongod.conf". </br>
+4 - Sempre leia o arquivo de log "/var/log/mongodb/mongod.log". A resposta para a maioria dos problemas estará nele. </br>
 
 
