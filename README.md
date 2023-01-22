@@ -253,7 +253,7 @@ sudo chmod 600 /Dados/MongoDB/mongodb/mongodb-key && sudo chown mongodb:mongodb 
 sudo nano /etc/mongod.conf
 ```
 
--- ADICIONE A AS LINHAS (EM TODAS AS VMs): </br>   
+-- ADICIONE AS LINHAS (EM TODAS AS VMs): </br>   
 
 ```
 security:
