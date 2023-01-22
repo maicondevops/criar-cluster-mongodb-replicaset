@@ -140,12 +140,16 @@ sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 -- AJUSTAR O BIND IP EM TODAS AS VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
 
 ```
-sudo service mongod stop && sudo nano /etc/mongod.conf && sudo service mongod start
+sudo service mongod stop && sudo nano /etc/mongod.conf
 ```
 
 ||
 |---|
 |<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/726dd5e977630b5ddcf74fe41c80baf31c5509e9/img/passo05.1.png" width="700" height="200"/>|
+
+```
+sudo service mongod start
+```
 
 OBSERVAÇÃO:
 
