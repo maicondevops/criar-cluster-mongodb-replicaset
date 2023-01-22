@@ -41,9 +41,11 @@ sudo apt install mongodb-org -y
 ```
 sudo systemctl start mongod.service && sudo systemctl status mongod && sudo systemctl enable mongod
 ```
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo01.png" width="800" height="300"/>|
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/>
-
+  
 ------------------------------------------------------------------------------------
 --- 03 - ALTERAR O DIRETÓRIO DE DADOS DO MONGO
 ------------------------------------------------------------------------------------
