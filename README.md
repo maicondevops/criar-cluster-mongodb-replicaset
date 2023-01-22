@@ -43,7 +43,7 @@ sudo systemctl start mongod.service && sudo systemctl status mongod && sudo syst
 ```
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo01.png" width="800" height="300"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo02.1.png" width="800" height="300"/>|
 
   
 ------------------------------------------------------------------------------------
@@ -64,6 +64,10 @@ sudo nano /etc/mongod.conf
 
 storage: </br>
   dbPath: /Dados/MongoDB/mongodb </br>
+
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/0407fb0fd4933b28c66180b921a661388aeb6bef/img/passo03.1.png" width="800" height="300"/>|
 
 -- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
 
