@@ -66,12 +66,12 @@ storage: </br>
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo03.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo03.1.png" width="800" height="250"/>|
 
 -- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
 
 ```
-sudo chmod chown mongodb:mongodb /Dados/MongoDB/mongodb
+sudo chmod 600 -R /Dados/MongoDB/mongodb && sudo chown mongodb:mongodb /Dados/MongoDB/mongodb/*
 ```
 
 -- REINICIAR O SERVIÇO: </br>
@@ -92,6 +92,10 @@ sudo service mongod stop && sudo nano /etc/mongod.conf
 -- ADICIONE A AS LINHAS: </br>
 replication: </br>
   replSetName: rs0 </br>
+  
+  ||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo04.1.png" width="800" height="250"/>|
 
 -- REINICIAR O SERVIÇO: </br>
 
@@ -130,6 +134,9 @@ sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 
 -- AJUSTAR O BINDIP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
 
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo05.1.png" width="800" height="250"/>|
 
 OBSERVAÇÃO:
 
@@ -179,6 +186,10 @@ rs.add("mdb03.mydomain.com:27017")
 rs.status()
 ```
 
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo06.1.png" width="800" height="250"/>|
+
 ------------------------------------------------------------------------------------
 --- 07 - TESTAR LOGON NO CLUSTER
 ------------------------------------------------------------------------------------
@@ -186,6 +197,10 @@ rs.status()
 ```
 mongodb://mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27017/?replicaSet=rs0 
 ```
+
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo07.1.png" width="800" height="250"/>|
 
 ------------------------------------------------------------------------------------
 --- 08 - GERAR KEY E ATIVAR AUTHORIZATION
@@ -201,6 +216,10 @@ sudo bash -c "openssl rand -base64 756 > /Dados/MongoDB/mongodb/mongodb-key" && 
 ```
 sudo cat /Dados/MongoDB/mongodb/mongodb-key
 ```
+
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.1.png" width="800" height="250"/>|
 
 -- CRIAR O FILE PARA KEY E COLAR A HASH COPIADA DO MASTER: </br>
 
@@ -226,6 +245,10 @@ sudo nano /etc/mongod.conf
 security:
    authorization: enabled
    keyFile: /Dados/MongoDB/mongodb/mongodb.key
+   
+   ||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.2.png" width="800" height="250"/>|
 
 -- REINICIAR O SERVIÇO: </br>
 
@@ -241,6 +264,9 @@ sudo service mongod restart && sudo systemctl restart mongod && sudo systemctl s
 mongodb://mongoadmin:mongoadmin@mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27017/?replicaSet=rs0
 ```
 
+||
+|---|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo09.1.png" width="800" height="250"/>|
 
 
 
