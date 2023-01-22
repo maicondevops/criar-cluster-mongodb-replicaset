@@ -132,11 +132,11 @@ sudo echo "192.168.50.11 mdb02.mydomain.com" >> /etc/hosts
 sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 ```
 
--- AJUSTAR O BINDIP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
+-- AJUSTAR O BIND IP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo05.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/726dd5e977630b5ddcf74fe41c80baf31c5509e9/img/passo05.1.png" width="800" height="250"/>|
 
 OBSERVAÇÃO:
 
