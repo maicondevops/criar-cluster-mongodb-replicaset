@@ -137,7 +137,7 @@ sudo echo "192.168.50.11 mdb02.mydomain.com" >> /etc/hosts
 sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 ```
 
--- AJUSTAR O BIND IP EM TODAS A VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
+-- AJUSTAR O BIND IP EM TODAS AS VMs (LIBERA O ACESSO EXTERNO AO MONGO): </br>
 
 ```
 sudo service mongod stop && sudo nano /etc/mongod.conf && sudo service mongod start
