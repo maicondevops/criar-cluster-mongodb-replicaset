@@ -43,7 +43,7 @@ sudo systemctl start mongod.service && sudo systemctl status mongod && sudo syst
 ```
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo02.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/1eff1757f6fec0bf78f94e20c21d208501f9b577/img/passo02.1.png" width="700" height="200"/>|
 
 ------------------------------------------------------------------------------------
 --- 03 - ALTERAR O DIRETÓRIO DE DADOS DO MONGO
@@ -66,7 +66,7 @@ storage: </br>
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo03.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo03.1.png" width="700" height="200"/>|
 
 -- AJUSTAR PEMISSÕES NO DIRETÓRIO DE DADOS DO MONGO: </br>
 
@@ -95,7 +95,7 @@ replication: </br>
   
   ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo04.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo04.1.png" width="700" height="200"/>|
 
 -- REINICIAR O SERVIÇO: </br>
 
@@ -136,7 +136,7 @@ sudo echo "192.168.50.12 mdb03.mydomain.com" >> /etc/hosts
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/726dd5e977630b5ddcf74fe41c80baf31c5509e9/img/passo05.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/726dd5e977630b5ddcf74fe41c80baf31c5509e9/img/passo05.1.png" width="700" height="200"/>|
 
 OBSERVAÇÃO:
 
@@ -188,7 +188,7 @@ rs.status()
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo06.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo06.1.png" width="700" height="400"/>|
 
 ------------------------------------------------------------------------------------
 --- 07 - TESTAR LOGON NO CLUSTER
@@ -200,7 +200,7 @@ mongodb://mdb01.mydomaincom:27017,mdb02.mydomain.com:27017,mdb03.mydomain.com:27
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo07.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo07.1.png" width="700" height="200"/>|
 
 ------------------------------------------------------------------------------------
 --- 08 - GERAR KEY E ATIVAR AUTHORIZATION
@@ -219,7 +219,7 @@ sudo cat /Dados/MongoDB/mongodb/mongodb-key
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.1.png" width="700" height="200"/>|
 
 -- CRIAR O FILE PARA KEY E COLAR A HASH COPIADA DO MASTER: </br>
 
@@ -248,7 +248,7 @@ security:
    
    ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.2.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo08.2.png" width="700" height="200"/>|
 
 -- REINICIAR O SERVIÇO: </br>
 
@@ -266,7 +266,15 @@ mongodb://mongoadmin:mongoadmin@mdb01.mydomaincom:27017,mdb02.mydomain.com:27017
 
 ||
 |---|
-|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo09.1.png" width="800" height="250"/>|
+|<img src="https://github.com/maicondevops/criar-cluster-mongodb-replicaset/blob/6908f188bf24df00813149c22bbc5d83530a6d60/img/passo09.1.png" width="700" height="200"/>|
 
+------------------------------------------------------------------------------------
+--- 10 - POSSÍVEIS ERROS E DICAS
+------------------------------------------------------------------------------------
+
+1 - Erro de permissão no diretório "/Dados/MongoDB/mongodb".
+2 - Erro de permissão no arquivo "/Dados/MongoDB/mongodb/mongodb.key".
+3 - Erro no acesso externo da VM, editar BindIp no arquivo "/etc/mongod.conf".
+4 - Sempre leia o arquivo de log "/var/log/mongodb/mongod.log". A resposta para a maioria dos problemas estará nele.
 
 
